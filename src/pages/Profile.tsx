@@ -9,8 +9,24 @@ import EmptyState from '@/components/EmptyState';
 import { QrCode, Plus, PackageOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Define proper interfaces for our token types
+interface BaseToken {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+}
+
+interface CollectedToken extends BaseToken {
+  claimed: boolean;
+}
+
+interface CreatedToken extends BaseToken {
+  count: number;
+}
+
 // Mock data for demonstration
-const mockTokens = [
+const mockTokens: CollectedToken[] = [
   {
     id: '1',
     title: 'Solana Breakout Hackathon',
@@ -27,7 +43,7 @@ const mockTokens = [
   }
 ];
 
-const mockCreatedTokens = [
+const mockCreatedTokens: CreatedToken[] = [
   {
     id: '101',
     title: 'Solana Meetup NYC',
@@ -40,7 +56,8 @@ const mockCreatedTokens = [
 const Profile = () => {
   const { toast } = useToast();
   
-  const handleTokenClick = (token: typeof mockTokens[0]) => {
+  // Update the function to handle both token types
+  const handleTokenClick = (token: BaseToken) => {
     toast({
       title: token.title,
       description: `Token ID: ${token.id}`,
