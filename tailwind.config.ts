@@ -23,6 +23,7 @@ export default {
 				'inter': ['Inter', 'sans-serif'],
 				'faktum': ['Faktum', 'sans-serif'],
 				'faktum-semibold': ['Faktum', 'sans-serif'],
+				'sohne': ['Söhne', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -89,6 +90,12 @@ export default {
 				'electric-blue': '#4361EE',
 				'mint-green': '#4CC9A2',
 				'coral': '#FF6B6B',
+				// Analytics Dashboard Colors
+				'navy': '#19216C',
+				'navy-dark': '#0F1343',
+				'purple': '#5438DC',
+				'mint': '#10DABE',
+				'amber': '#FFC947',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -149,6 +156,8 @@ export default {
 				'deep-gradient': 'linear-gradient(to right, #3A1D8A, #4361EE)',
 				'glow-gradient': 'linear-gradient(to right bottom, rgba(58, 29, 138, 0.5), rgba(67, 97, 238, 0.5))',
 				'creator-gradient': 'linear-gradient(to right, #2D0C76, #5438DC)',
+				'gradient-blue-purple': 'linear-gradient(to right, #19216C, #5438DC)',
+				'gradient-navy': 'linear-gradient(to bottom right, #19216C, #0F1343)',
 			},
 			boxShadow: {
 				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
@@ -163,8 +172,10 @@ export default {
 				tighter: '-0.05em',
 				tightest: '-0.1em',
 			},
+			lineHeight: {
+				'analytics': '1.6',
+			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
