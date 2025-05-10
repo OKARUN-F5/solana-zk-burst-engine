@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				inter: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -73,12 +76,19 @@ export default {
 					DEFAULT: '#14F195',
 					dark: '#0BD07E',
 					light: '#66FFD1'
-				}
+				},
+				// New color scheme
+				'deep-purple': '#3A1D8A',
+				'electric-blue': '#4361EE',
+				'mint-green': '#4CC9A2',
+				'coral': '#FF6B6B',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				xl: '1rem',
+				'2xl': '1.5rem',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -106,19 +116,43 @@ export default {
 				'fade-in': {
 					from: { opacity: '0', transform: 'translateY(10px)' },
 					to: { opacity: '1', transform: 'translateY(0)' }
-				}
+				},
+				'card-hover': {
+					'0%': { transform: 'translateY(0) rotate(0)' },
+					'50%': { transform: 'translateY(-5px) rotate(1deg)' },
+					'100%': { transform: 'translateY(0) rotate(0)' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-				'fade-in': 'fade-in 0.5s ease-out'
+				'fade-in': 'fade-in 0.5s ease-out',
+				'card-hover': 'card-hover 0.5s ease-in-out',
+				'shimmer': 'shimmer 2s infinite linear',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'ctoken-gradient': 'linear-gradient(to right bottom, #9945FF, #14F195)'
-			}
+				'ctoken-gradient': 'linear-gradient(to right bottom, #9945FF, #14F195)',
+				'deep-gradient': 'linear-gradient(to right, #3A1D8A, #4361EE)',
+				'glow-gradient': 'linear-gradient(to right bottom, rgba(58, 29, 138, 0.5), rgba(67, 97, 238, 0.5))',
+			},
+			boxShadow: {
+				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+				'glow-sm': '0 0 5px rgba(67, 97, 238, 0.3)',
+				'glow-md': '0 0 15px rgba(67, 97, 238, 0.4)',
+				'glow-lg': '0 0 30px rgba(67, 97, 238, 0.5)',
+			},
+			letterSpacing: {
+				tight: '-0.025em',
+				tighter: '-0.05em',
+				tightest: '-0.1em',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
