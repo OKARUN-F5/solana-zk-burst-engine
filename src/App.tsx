@@ -9,6 +9,7 @@ import Create from "./pages/Create";
 import Creator from "./pages/Creator";
 import Scan from "./pages/Scan";
 import Profile from "./pages/Profile";
+import TokenGallery from "./pages/TokenGallery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/creator" element={<Creator />} />
           <Route path="/scan" element={<Scan />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/gallery" element={<TokenGallery />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
