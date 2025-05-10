@@ -1,5 +1,6 @@
-
 @import url('https://fonts.cdnfonts.com/css/faktum');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -42,6 +43,12 @@
     --creator-primary-light: 252 54% 45%;
     --creator-success: 160 100% 41%;
     --creator-warning: 21 100% 68%;
+
+    /* Onboarding Custom Colors */
+    --onboarding-bg-from: 255 50% 12%;
+    --onboarding-bg-to: 258 45% 31%;
+    --onboarding-highlight: 171 80% 63%;
+    --onboarding-action: 324 100% 71%;
   }
  
   .dark {
@@ -78,6 +85,12 @@
     --creator-primary-light: 252 54% 45%;
     --creator-success: 160 100% 41%;
     --creator-warning: 21 100% 68%;
+
+    /* Onboarding Custom Colors */
+    --onboarding-bg-from: 255 50% 12%;
+    --onboarding-bg-to: 258 45% 31%;
+    --onboarding-highlight: 171 80% 63%;
+    --onboarding-action: 324 100% 71%;
   }
 }
 
@@ -193,6 +206,82 @@
   .input-creator {
     @apply bg-black/20 border-white/10 focus:border-creator-primary-light focus:ring-creator-primary-light/20;
   }
+  
+  /* Onboarding Components */
+  .onboarding-container {
+    @apply min-h-screen bg-gradient-to-br from-onboarding-from to-onboarding-to text-white font-jakarta;
+  }
+
+  .onboarding-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg;
+  }
+
+  .onboarding-step {
+    @apply flex flex-col gap-6 max-w-xl mx-auto p-8;
+    line-height: 1.5;
+    letter-spacing: -0.8px;
+  }
+
+  .highlight-text {
+    @apply text-onboarding-highlight font-medium;
+  }
+
+  .action-text {
+    @apply text-onboarding-action font-medium;
+  }
+
+  .floating-tooltip {
+    @apply absolute bg-black/80 text-white text-sm py-2 px-3 rounded-md shadow-lg z-50 opacity-0 transition-opacity duration-300 max-w-xs;
+  }
+
+  .help-icon {
+    @apply text-white/70 hover:text-white transition-colors cursor-help;
+  }
+
+  /* Animation classes for onboarding */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .slide-in {
+    animation: slideIn 0.5s ease forwards;
+  }
+
+  .pulse-highlight {
+    animation: pulseHighlight 2s infinite;
+  }
+
+  /* Animation keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulseHighlight {
+    0%, 100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
 }
 
 /* Custom scrollbar */
@@ -287,4 +376,3 @@
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
-

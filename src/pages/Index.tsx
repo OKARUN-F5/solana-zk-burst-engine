@@ -118,9 +118,15 @@ const Index = () => {
               Create your first compressed token in minutes and start building engaging experiences for your community.
             </p>
             
-            <Button asChild size="lg">
-              <Link to="/create">Create Your First Token</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg">
+                <Link to="/create">Create Your First Token</Link>
+              </Button>
+              
+              <Button asChild variant="outline" size="lg">
+                <Link to="/onboarding">New User? Start Onboarding</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,6 +24,7 @@ export default {
 				'faktum-semibold': ['Faktum', 'sans-serif'],
 				'sohne': ['Söhne', 'system-ui', 'sans-serif'],
 				'dm-sans': ['DM Sans', 'sans-serif'],
+				'jakarta': ['Plus Jakarta Sans', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -102,6 +102,11 @@ export default {
 				'gallery-bg-to': '#261447',
 				'gallery-accent-pink': '#FF3864',
 				'gallery-accent-teal': '#1CDEC9',
+				// Onboarding theme colors
+				'onboarding-from': '#110A30',
+				'onboarding-to': '#3B2D71',
+				'onboarding-highlight': '#5CE5D5',
+				'onboarding-action': '#FF6AC2',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -177,6 +182,15 @@ export default {
 					from: { opacity: '0', transform: 'scale(0.95)' },
 					to: { opacity: '1', transform: 'scale(1)' }
 				},
+				'celebration': {
+					'0%': { transform: 'scale(0.5)', opacity: '0' },
+					'50%': { transform: 'scale(1.2)', opacity: '1' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'float-in': {
+					'0%': { transform: 'translateY(20px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -190,6 +204,8 @@ export default {
 				'float-3d': 'float-3d 8s ease-in-out infinite',
 				'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
 				'masonry-appear': 'masonry-appear 0.6s ease-out forwards',
+				'celebration': 'celebration 1s ease-out forwards',
+				'float-in': 'float-in 0.5s ease-out forwards',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -201,6 +217,7 @@ export default {
 				'gradient-navy': 'linear-gradient(to bottom right, #19216C, #0F1343)',
 				'gallery-gradient': 'linear-gradient(135deg, #0D0221, #261447)',
 				'card-shine': 'linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)',
+				'onboarding-gradient': 'linear-gradient(135deg, #110A30, #3B2D71)',
 			},
 			boxShadow: {
 				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
@@ -211,15 +228,18 @@ export default {
 				'creator-hover': '0 12px 40px rgba(45, 12, 118, 0.25), 0 4px 8px rgba(45, 12, 118, 0.1)',
 				'token-card': '0 8px 20px rgba(13, 2, 33, 0.5), 0 0 0 1px rgba(255, 56, 100, 0.1)',
 				'token-glow': '0 0 20px rgba(28, 222, 201, 0.4), 0 0 60px rgba(255, 56, 100, 0.2)',
+				'onboarding': '0 10px 25px rgba(17, 10, 48, 0.3)',
 			},
 			letterSpacing: {
 				tight: '-0.025em',
 				tighter: '-0.05em',
 				tightest: '-0.1em',
 				'super-tight': '-1.5px',
+				'onboarding': '-0.8px',
 			},
 			lineHeight: {
 				'analytics': '1.6',
+				'onboarding': '1.5',
 			}
 		}
 	},
