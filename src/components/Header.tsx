@@ -62,6 +62,19 @@ const Header = () => {
           
           <Button 
             asChild 
+            variant={isActive("/creator") ? "default" : "ghost"} 
+            size="sm"
+            className={isActive("/creator") ? "bg-gradient-to-r from-creator-primary to-creator-primary-light text-white shadow-glow-sm" : ""}
+            onClick={triggerHapticFeedback}
+          >
+            <Link to="/creator" className="flex items-center gap-2">
+              <QrCode className="h-4 w-4" />
+              {!isMobile && <span>Creator</span>}
+            </Link>
+          </Button>
+          
+          <Button 
+            asChild 
             variant={isActive("/profile") ? "default" : "ghost"} 
             size="sm"
             className={isActive("/profile") ? "bg-deep-gradient text-white shadow-glow-sm" : ""}

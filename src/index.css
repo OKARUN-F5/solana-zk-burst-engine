@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/faktum');
 
 @tailwind base;
 @tailwind components;
@@ -36,6 +36,12 @@
     --ring: 255 65% 55%;
 
     --radius: 0.75rem;
+    
+    /* Creator Experience Custom Colors */
+    --creator-primary: 257 80% 25%;
+    --creator-primary-light: 252 54% 45%;
+    --creator-success: 160 100% 41%;
+    --creator-warning: 21 100% 68%;
   }
  
   .dark {
@@ -66,6 +72,12 @@
     --border: 225 25% 22%;
     --input: 225 25% 22%;
     --ring: 255 65% 55%;
+    
+    /* Creator Experience Custom Colors */
+    --creator-primary: 257 80% 25%;
+    --creator-primary-light: 252 54% 45%;
+    --creator-success: 160 100% 41%;
+    --creator-warning: 21 100% 68%;
   }
 }
 
@@ -80,9 +92,13 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-background text-foreground font-faktum antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
-    line-height: 1.5;
+    line-height: 1.45;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-faktum-semibold;
   }
 }
 
@@ -121,6 +137,61 @@
     );
     background-size: 200% 100%;
     animation: shimmer 2s infinite linear;
+  }
+  
+  /* Creator Experience Custom Components */
+  .creator-card {
+    @apply relative overflow-hidden rounded-xl bg-card border border-white/10 shadow-lg transition-all duration-300 hover:shadow-glow-md;
+    background-image: radial-gradient(circle at 100% 100%, rgba(84, 56, 220, 0.03) 0%, transparent 40%);
+  }
+  
+  .creator-card::after {
+    @apply content-[''] absolute inset-0 rounded-xl bg-grid-pattern opacity-5 pointer-events-none;
+  }
+  
+  .creator-gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-creator-primary to-creator-primary-light;
+  }
+  
+  .creator-success-badge {
+    @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-creator-success/20 text-creator-success;
+  }
+  
+  .creator-warning-badge {
+    @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-creator-warning/20 text-creator-warning;
+  }
+  
+  .wizard-step {
+    @apply relative flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black/20 z-10;
+  }
+  
+  .wizard-step.active {
+    @apply bg-gradient-to-r from-creator-primary to-creator-primary-light text-white;
+  }
+  
+  .wizard-step.completed {
+    @apply bg-creator-success text-black;
+  }
+  
+  .wizard-connector {
+    @apply absolute top-5 h-0.5 bg-white/20 -z-10;
+    left: calc(50% + 1.25rem);
+    width: calc(100% - 5rem);
+  }
+  
+  .wizard-connector.active {
+    @apply bg-gradient-to-r from-creator-primary to-creator-primary-light;
+  }
+  
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+  
+  .input-creator {
+    @apply bg-black/20 border-white/10 focus:border-creator-primary-light focus:ring-creator-primary-light/20;
   }
 }
 
@@ -188,7 +259,32 @@
   opacity: 0.7;
 }
 
+/* Creator Experience Animations */
+.creator-card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creator-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(45, 12, 118, 0.2);
+}
+
+.pulse-creator {
+  animation: pulse-creator 2s infinite;
+}
+
+@keyframes pulse-creator {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 0.4; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.03); }
 }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+

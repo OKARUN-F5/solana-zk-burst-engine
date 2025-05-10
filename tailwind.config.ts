@@ -20,7 +20,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Inter', 'sans-serif'],
+				'inter': ['Inter', 'sans-serif'],
+				'faktum': ['Faktum', 'sans-serif'],
+				'faktum-semibold': ['Faktum', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -77,6 +79,11 @@ export default {
 					dark: '#0BD07E',
 					light: '#66FFD1'
 				},
+				// Event Creator Experience colors
+				'creator-primary': 'hsl(var(--creator-primary))',
+				'creator-primary-light': 'hsl(var(--creator-primary-light))',
+				'creator-success': 'hsl(var(--creator-success))',
+				'creator-warning': 'hsl(var(--creator-warning))',
 				// New color scheme
 				'deep-purple': '#3A1D8A',
 				'electric-blue': '#4361EE',
@@ -141,12 +148,15 @@ export default {
 				'ctoken-gradient': 'linear-gradient(to right bottom, #9945FF, #14F195)',
 				'deep-gradient': 'linear-gradient(to right, #3A1D8A, #4361EE)',
 				'glow-gradient': 'linear-gradient(to right bottom, rgba(58, 29, 138, 0.5), rgba(67, 97, 238, 0.5))',
+				'creator-gradient': 'linear-gradient(to right, #2D0C76, #5438DC)',
 			},
 			boxShadow: {
 				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
 				'glow-sm': '0 0 5px rgba(67, 97, 238, 0.3)',
 				'glow-md': '0 0 15px rgba(67, 97, 238, 0.4)',
 				'glow-lg': '0 0 30px rgba(67, 97, 238, 0.5)',
+				'creator': '0 8px 30px rgba(45, 12, 118, 0.15), 0 2px 5px rgba(45, 12, 118, 0.05)',
+				'creator-hover': '0 12px 40px rgba(45, 12, 118, 0.25), 0 4px 8px rgba(45, 12, 118, 0.1)',
 			},
 			letterSpacing: {
 				tight: '-0.025em',
@@ -157,3 +167,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
