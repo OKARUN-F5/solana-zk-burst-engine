@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { TabsContent } from '@/components/ui/tabs';
 import TokenCard from '@/components/TokenCard';
@@ -6,22 +5,7 @@ import EmptyState from '@/components/EmptyState';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { PackageOpen, QrCode, Plus } from 'lucide-react';
-
-// Define proper interfaces for our token types
-interface BaseToken {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-}
-
-interface CollectedToken extends BaseToken {
-  claimed: boolean;
-}
-
-interface CreatedToken extends BaseToken {
-  count: number;
-}
+import { BaseToken, CollectedToken, CreatedToken } from '@/hooks/useProfileTokens';
 
 interface TokensDisplayProps {
   activeTab: string;
