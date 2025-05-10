@@ -18,6 +18,8 @@ const AnalyticsDashboard = () => {
   const {
     timeRange,
     setTimeRange,
+    dateRange,
+    setDateRange,
     claimData,
     walletData,
     conversionData,
@@ -35,11 +37,13 @@ const AnalyticsDashboard = () => {
       {/* Key Metrics */}
       <KeyMetricsGrid />
       
-      {/* Time Range Selector */}
-      <Tabs defaultValue={timeRange} onValueChange={setTimeRange} className="space-y-6">
+      {/* Time Range Selector with Date Range Picker */}
+      <Tabs defaultValue={timeRange} value={timeRange} onValueChange={setTimeRange} className="space-y-6">
         <TimeRangeSelector 
           timeRange={timeRange}
           setTimeRange={setTimeRange}
+          dateRange={dateRange}
+          onDateRangeChange={setDateRange}
           exportAnalytics={exportAnalytics}
         />
         
@@ -62,6 +66,15 @@ const AnalyticsDashboard = () => {
         
         <TabsContent value="monthly" className="mt-0">
           <EmptyMonthlyChart />
+        </TabsContent>
+        
+        {/* Custom Date Range Content */}
+        <TabsContent value="custom" className="mt-0">
+          <ClaimsViewsChart 
+            data={claimData}
+            title="Custom Date Range"
+            description={`Data from ${dateRange?.from ? format(dateRange.from, "MMM d, y") : ""} to ${dateRange?.to ? format(dateRange.to, "MMM d, y") : "present"}`}
+          />
         </TabsContent>
       </Tabs>
       
