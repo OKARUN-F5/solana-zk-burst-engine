@@ -1,46 +1,16 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Check, QrCode, User } from 'lucide-react';
+import { Check, Users, Crown, HelpCircle } from 'lucide-react';
+import { useIsMobile } from "@/hooks/use-mobile";
 
-interface UseCaseOption {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  benefits: string[];
+interface UseCaseSelectionProps {
+  onSelectUserType: (type: 'creator' | 'attendee') => void;
+  selectedUserType: 'creator' | 'attendee';
 }
 
-const useCaseOptions: UseCaseOption[] = [
-  {
-    id: 'creator',
-    title: 'Event Creator',
-    description: 'Create and distribute tokens for your events, conferences, or communities',
-    icon: <QrCode className="h-6 w-6 text-onboarding-action" />,
-    benefits: [
-      'Issue tokens for attendees to claim',
-      'Track engagement and participation',
-      'Reward community members',
-      'Create exclusive experiences',
-    ]
-  },
-  {
-    id: 'attendee',
-    title: 'Event Attendee',
-    description: 'Collect tokens from events and experiences you participate in',
-    icon: <User className="h-6 w-6 text-onboarding-highlight" />,
-    benefits: [
-      'Prove your attendance at events',
-      'Build a collection of experiences',
-      'Unlock exclusive benefits from creators',
-      'Join token-gated communities',
-    ]
-  }
-];
-
-const UseCaseSelection: React.FC = () => {
-  const [selectedUseCase, setSelectedUseCase] = useState<string | null>(null);
+const UseCaseSelection: React.FC<UseCaseSelectionProps> = ({ onSelectUserType, selectedUserType }) => {
+  const isMobile = useIsMobile();
   
   return (
     <>
@@ -49,77 +19,87 @@ const UseCaseSelection: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <h2 className="font-jakarta font-bold text-2xl tracking-onboarding mb-2">How Will You Use cTokens?</h2>
-        <p className="text-white/80 font-jakarta tracking-onboarding leading-onboarding mb-6">
-          We'll personalize your experience based on your primary use case.
+        <h2 className="font-jakarta font-bold text-xl sm:text-2xl tracking-onboarding mb-2">How will you use cTokens?</h2>
+        <p className="text-white/80 font-jakarta tracking-onboarding leading-onboarding text-sm sm:text-base mb-4 sm:mb-6">
+          Select your primary use case to personalize your experience.
         </p>
       </motion.div>
 
-      <motion.div 
-        className="grid grid-cols-1 gap-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-      >
-        {useCaseOptions.map((option) => (
-          <Card 
-            key={option.id}
-            className={`border cursor-pointer transition-all duration-300 ${
-              selectedUseCase === option.id 
-                ? 'border-onboarding-action bg-white/10' 
-                : 'border-white/10 bg-white/5 hover:bg-white/10'
-            }`}
-            onClick={() => setSelectedUseCase(option.id)}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <button
+            className={`w-full h-full p-4 rounded-lg flex flex-col items-center text-center transition-all
+              ${selectedUserType === 'creator' 
+                ? 'bg-white/20 border border-onboarding-highlight' 
+                : 'bg-white/5 border border-white/10 hover:bg-white/10'}`}
+            onClick={() => onSelectUserType('creator')}
           >
-            <CardContent className="p-6">
-              <div className="flex items-start">
-                <div className={`h-12 w-12 rounded-lg flex items-center justify-center mr-4 ${
-                  selectedUseCase === option.id 
-                    ? 'bg-onboarding-action/20' 
-                    : 'bg-white/10'
-                }`}>
-                  {option.icon}
-                </div>
-                
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-jakarta font-semibold text-lg tracking-onboarding">{option.title}</h3>
-                    {selectedUseCase === option.id && <Check className="h-5 w-5 text-onboarding-action" />}
-                  </div>
-                  <p className="text-white/70 font-jakarta text-sm tracking-onboarding leading-onboarding mt-1">
-                    {option.description}
-                  </p>
-                  
-                  {selectedUseCase === option.id && (
-                    <motion.div 
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      transition={{ duration: 0.3 }}
-                      className="mt-4"
-                    >
-                      <p className="font-jakarta text-xs text-white/60 mb-2">BENEFITS:</p>
-                      <ul className="space-y-1">
-                        {option.benefits.map((benefit, index) => (
-                          <motion.li 
-                            key={index}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.1 + (index * 0.1) }}
-                            className="flex items-center text-sm font-jakarta tracking-onboarding"
-                          >
-                            <span className="text-xs text-onboarding-highlight mr-2">•</span>
-                            {benefit}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </div>
+            <div className="mb-3 relative">
+              <div className="rounded-full bg-white/10 p-3">
+                <Crown className="h-6 w-6 text-onboarding-highlight" />
               </div>
-            </CardContent>
-          </Card>
-        ))}
-      </motion.div>
+              {selectedUserType === 'creator' && (
+                <div className="absolute -top-1 -right-1 bg-onboarding-highlight rounded-full p-0.5">
+                  <Check className="h-3 w-3 text-black" />
+                </div>
+              )}
+            </div>
+            <h3 className="font-jakarta font-semibold tracking-onboarding text-base sm:text-lg mb-1">Event Creator</h3>
+            <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-jakarta">
+              I want to create and distribute tokens for my events or community.
+            </p>
+          </button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <button
+            className={`w-full h-full p-4 rounded-lg flex flex-col items-center text-center transition-all
+              ${selectedUserType === 'attendee' 
+                ? 'bg-white/20 border border-onboarding-highlight' 
+                : 'bg-white/5 border border-white/10 hover:bg-white/10'}`}
+            onClick={() => onSelectUserType('attendee')}
+          >
+            <div className="mb-3 relative">
+              <div className="rounded-full bg-white/10 p-3">
+                <Users className="h-6 w-6 text-onboarding-highlight" />
+              </div>
+              {selectedUserType === 'attendee' && (
+                <div className="absolute -top-1 -right-1 bg-onboarding-highlight rounded-full p-0.5">
+                  <Check className="h-3 w-3 text-black" />
+                </div>
+              )}
+            </div>
+            <h3 className="font-jakarta font-semibold tracking-onboarding text-base sm:text-lg mb-1">Event Attendee</h3>
+            <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-jakarta">
+              I want to collect tokens from events I attend or participate in.
+            </p>
+          </button>
+        </motion.div>
+      </div>
+
+      <div className="mt-4 sm:mt-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 flex items-start"
+        >
+          <HelpCircle className="h-4 w-4 sm:h-5 sm:w-5 text-onboarding-highlight mt-0.5 mr-2 sm:mr-3 flex-shrink-0" />
+          <div className="font-jakarta tracking-onboarding leading-onboarding text-xs sm:text-sm">
+            <p className="text-white/90">
+              Don't worry, you can always switch between these roles later in your profile settings.
+            </p>
+          </div>
+        </motion.div>
+      </div>
     </>
   );
 };

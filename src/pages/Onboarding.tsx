@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 import OnboardingLayout from '@/components/onboarding/OnboardingLayout';
 import WalletConnectionStep from '@/components/onboarding/WalletConnectionStep';
 import ZkCompressionExplainer from '@/components/onboarding/ZkCompressionExplainer';
@@ -13,6 +14,7 @@ const Onboarding = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [userType, setUserType] = useState<'creator' | 'attendee'>('attendee');
+  const isMobile = useIsMobile();
   
   const totalSteps = 5;
   
@@ -24,7 +26,7 @@ const Onboarding = () => {
       if (currentStep === 2) {
         toast({
           title: "Learning more about ZK Compression",
-          description: "Discover how this technology makes tokens more efficient",
+          description: isMobile ? "Discover how this makes tokens efficient" : "Discover how this technology makes tokens more efficient",
         });
       }
     } else {
@@ -42,6 +44,10 @@ const Onboarding = () => {
   const handleSkip = () => {
     navigate('/');
   };
+
+  const handleSetUserType = (type: 'creator' | 'attendee') => {
+    setUserType(type);
+  };
   
   const renderStepContent = () => {
     switch (currentStep) {
@@ -50,9 +56,9 @@ const Onboarding = () => {
       case 2:
         return <ZkCompressionExplainer />;
       case 3:
-        return <UseCaseSelection />;
+        return <UseCaseSelection onSelectUserType={handleSetUserType} selectedUserType={userType} />;
       case 4:
-        return <PermissionsStep />;
+        return <PermissionsStep userType={userType} />;
       case 5:
         return <CelebrationStep userType={userType} />;
       default:
