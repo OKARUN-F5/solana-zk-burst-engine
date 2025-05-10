@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ScanLine } from '@/components/ScanLine';
+import ScanLine from '@/components/ScanLine';
 import { QrCode, AlertCircle } from 'lucide-react';
 
 interface QRScannerProps {
