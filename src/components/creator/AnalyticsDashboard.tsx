@@ -2,6 +2,7 @@
 import React from 'react';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import { format } from 'date-fns';
 
 // Import refactored components
 import KeyMetricsGrid from './analytics/KeyMetricsGrid';
