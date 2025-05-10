@@ -30,7 +30,7 @@ import {
   MapPin,
   BarChart as BarChartIcon,
   ChartPie,
-  ChartLineUp,
+  ChartLine,
   InfoIcon
 } from 'lucide-react';
 import { useAnalytics } from '@/hooks/useAnalytics';
