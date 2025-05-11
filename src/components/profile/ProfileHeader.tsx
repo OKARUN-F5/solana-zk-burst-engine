@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -19,9 +20,11 @@ const ProfileHeader = () => {
             <p className="text-sm text-muted-foreground">sol...x3fY</p>
           </div>
           <div className="ml-auto hidden md:block">
-            <Button variant="outline" size="sm" className="frost-panel border-electric-blue/20 text-electric-blue hover:text-electric-blue/80">
-              Edit Profile
-            </Button>
+            <Link to="/profile/edit">
+              <Button variant="outline" size="sm" className="frost-panel border-electric-blue/20 text-electric-blue hover:text-electric-blue/80">
+                Edit Profile
+              </Button>
+            </Link>
           </div>
         </div>
       </Card>

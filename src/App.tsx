@@ -9,6 +9,7 @@ import Create from "./pages/Create";
 import Creator from "./pages/Creator";
 import Scan from "./pages/Scan";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
 import TokenGallery from "./pages/TokenGallery";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/creator" element={<Creator />} />
           <Route path="/scan" element={<Scan />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
           <Route path="/gallery" element={<TokenGallery />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="*" element={<NotFound />} />

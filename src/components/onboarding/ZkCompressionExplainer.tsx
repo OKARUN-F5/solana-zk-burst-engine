@@ -15,7 +15,7 @@ const ZkCompressionExplainer: React.FC = () => {
           Power of ZK Compression
         </h2>
         <p className="text-white/80 font-jakarta tracking-onboarding leading-onboarding mb-6">
-          cTokens use Solana's Zero-Knowledge Compression to make blockchain collectibles more
+          cTokens use Solana's Zero-Knowledge compression to make blockchain collectibles more
           efficient and affordable than ever before.
         </p>
       </motion.div>
@@ -67,12 +67,14 @@ const ZkCompressionExplainer: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3, duration: 0.5 }}
-              className="absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 text-center"
+              className="absolute bottom-[-60px] left-1/2 transform -translate-x-1/2 text-center"
             >
-              <div className="text-xl font-bold font-jakarta text-onboarding-highlight">
-                99.8% more efficient
+              <div className="bg-onboarding-highlight/20 rounded-full px-4 py-1 mb-1">
+                <span className="text-xl font-bold font-jakarta text-onboarding-highlight">
+                  99.8% more efficient
+                </span>
               </div>
-              <div className="text-sm text-white/60">Less cost, faster transactions</div>
+              <div className="text-sm text-white/70">Less cost, faster transactions</div>
             </motion.div>
           </div>
         </div>
