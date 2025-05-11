@@ -54,6 +54,7 @@ const Onboarding = () => {
       case 1:
         return <WalletConnectionStep />;
       case 2:
+        // Remove the userType prop since ZkCompressionExplainer doesn't accept it
         return <ZkCompressionExplainer />;
       case 3:
         return <UseCaseSelection onSelectUserType={handleSetUserType} selectedUserType={userType} />;
