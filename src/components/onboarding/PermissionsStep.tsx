@@ -18,6 +18,10 @@ interface PermissionItem {
   tooltip: string;
 }
 
+interface PermissionsStepProps {
+  userType: 'creator' | 'attendee';
+}
+
 const permissions: PermissionItem[] = [
   {
     id: 'basic-access',
@@ -49,7 +53,7 @@ const permissions: PermissionItem[] = [
   },
 ];
 
-const PermissionsStep: React.FC = () => {
+const PermissionsStep: React.FC<PermissionsStepProps> = ({ userType }) => {
   const [enabledPermissions, setEnabledPermissions] = useState<string[]>(
     permissions.filter(p => p.required).map(p => p.id)
   );
